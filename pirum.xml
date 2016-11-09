@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<server>
+	<name>pear.cakephp.org</name>
+	<summary>CakePHP PEAR channel</summary>
+	<alias>cakephp</alias>
+	<url>http://pear.cakephp.org/</url>
+</server>

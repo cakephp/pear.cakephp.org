@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 LABEL Description="This image is used to host pear.cakephp.org"
 
 RUN apt-get update && apt-get install -y \
+    wget \
     build-essential \
     nginx git curl \
     php \
@@ -13,7 +14,6 @@ RUN apt-get update && apt-get install -y \
     php-mbstring \
     php-zip \
     php-xml \
-    php-fpm \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
@@ -33,6 +33,7 @@ RUN cd /data \
 
 # Build the pear channel from the zip files in the volume.
 RUN cd /data/public \
+  && cp /data/pirum.xml /data/public/pirum.xml \
   && ../vendor/bin/pirum build .
 
 RUN rm /var/www/html/index.nginx-debian.html \
