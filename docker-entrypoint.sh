@@ -2,17 +2,18 @@
 set -eo pipefail
 
 main() {
-  local PIRIUM_BIN="/data/pirium"
+  local PIRIUM_BIN="/app/pirium"
   # Build the pear channel from the zip files in the volume.
-  pushd /data/public > /dev/null
-  cp /data/pirum.xml /data/public/pirum.xml
+  pushd /app/public > /dev/null
+  cp /app/pirum.xml /app/public/pirum.xml
 
-  mkdir -p /data/public/get/
-  rm -rf /data/public/get/*tgz
+  mkdir -p /app/public/get/
+  rm -rf /app/public/get/*tgz
 
   for i in *.tgz; do
-    cp "$i" /data/public/get/
+    cp "$i" /app/public/get/
   done
+
   "$PIRIUM_BIN" build .
   popd > /dev/null
 

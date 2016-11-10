@@ -21,13 +21,13 @@ RUN mkdir /website /root/.ssh
 
 RUN ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 
-WORKDIR /data
-COPY . /data
+WORKDIR /app
+COPY . /app
 
-VOLUME /data/public
+VOLUME /app/public
 
 RUN rm /var/www/html/index.nginx-debian.html \
-  && mv /data/nginx.conf /etc/nginx/sites-enabled/default
+  && mv /app/nginx.conf /etc/nginx/sites-enabled/default
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
@@ -35,4 +35,4 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 
 EXPOSE 80
 
-ENTRYPOINT ["/data/docker-entrypoint.sh"]
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
