@@ -29,7 +29,7 @@ VOLUME /data/public
 # Install pirum
 RUN cd /data \
   && wget https://getcomposer.org/composer.phar \
-  && php composer.phar require pirum/pirum
+  && php composer.phar require pirum/pirum:1.1.5
 
 RUN rm /var/www/html/index.nginx-debian.html \
   && mv /data/nginx.conf /etc/nginx/sites-enabled/default \
