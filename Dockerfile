@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /website /root/.ssh
+RUN mkdir /app /root/.ssh
 
 RUN ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 
