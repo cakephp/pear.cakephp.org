@@ -8,7 +8,7 @@ main() {
   ../vendor/bin/pirum build .
   popd > /dev/null
 
-  nginx -g daemon off
+  nginx -g "daemon off;"
 }
 
 main "$@"
