@@ -41,4 +41,4 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 
 EXPOSE 80
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/data/docker-entrypoint.sh"]
