@@ -27,8 +27,7 @@ COPY . /data
 VOLUME /data/public
 
 RUN rm /var/www/html/index.nginx-debian.html \
-  && mv /data/nginx.conf /etc/nginx/sites-enabled/default \
-  && ls /etc/nginx/sites-enabled/ /etc/nginx/
+  && mv /data/nginx.conf /etc/nginx/sites-enabled/default
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
