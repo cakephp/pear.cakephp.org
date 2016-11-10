@@ -11,7 +11,7 @@ docker build . cakephp/pear
 # run the image with a mounted volume
 docker run
   -it
-  -v some/public/dir/with/pear/zip/files:/app/public
+  -v some/public/dir/with/pear/zip/files:/data
   cakephp/pear
 ```
 

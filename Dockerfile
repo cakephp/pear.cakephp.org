@@ -17,14 +17,13 @@ RUN apt-get update && apt-get install -y \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /app /root/.ssh
+RUN mkdir -p /app /data /root/.ssh
 
 RUN ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 
 WORKDIR /app
 COPY . /app
-
-VOLUME /app/public
+VOLUME /data
 
 RUN rm /var/www/html/index.nginx-debian.html \
   && mv /app/nginx.conf /etc/nginx/sites-enabled/default
