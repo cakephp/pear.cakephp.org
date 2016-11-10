@@ -21,15 +21,14 @@ RUN mkdir /website /root/.ssh
 
 RUN ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 
+# Install pirum
+RUN wget https://getcomposer.org/composer.phar \
+  && php composer.phar global require pirum/pirum:1.1.5
+
 WORKDIR /data
 COPY . /data
 
 VOLUME /data/public
-
-# Install pirum
-RUN cd /data \
-  && wget https://getcomposer.org/composer.phar \
-  && php composer.phar require pirum/pirum:1.1.5
 
 RUN rm /var/www/html/index.nginx-debian.html \
   && mv /data/nginx.conf /etc/nginx/sites-enabled/default \
