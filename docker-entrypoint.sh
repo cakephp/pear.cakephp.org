@@ -10,8 +10,8 @@ main() {
   mkdir -p /app/public/get/
   rm -rf /app/public/get/*tgz
 
-  find . -name "*.tar" -maxdepth 0 -type f -exec cp {} /app/public/get/ \;
-  find . -name "*.tgz" -maxdepth 0 -type f -exec cp {} /app/public/get/ \;
+  find . -maxdepth 1 -type f -name "*.tar" -exec cp {} /app/public/get/ \;
+  find . -maxdepth 1 -type f -name "*.tgz" -exec cp {} /app/public/get/ \;
 
   "$PIRIUM_BIN" build .
   popd > /dev/null
