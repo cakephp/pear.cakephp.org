@@ -15,6 +15,28 @@ docker run
   cakephp/pear
 ```
 
-## Deployment
+## Deploying
 
-This is deployed via Docker on [Dokku](http://dokku.viewdocs.io/dokku/).
+On the Dokku server:
+
+```shell
+# create the app
+dokku apps:create pear
+
+# create requisite persistent storage
+mkdir -p /var/lib/dokku/data/storage/pear
+chown 32767:32767 /var/lib/dokku/data/storage/pear
+
+# mount the storage, docker socket, and docker binary
+dokku storage:mount pear /var/lib/dokku/data/storage/pear:/data
+```
+
+On your local computer:
+
+```shell
+# add the remote
+git remote add dokku dokku@SERVER_IP:pear
+
+# push the app
+git push dokku master
+```
